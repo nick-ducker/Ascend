@@ -1,6 +1,7 @@
 class CreateTicks < ActiveRecord::Migration[6.0]
   def change
     create_table :ticks do |t|
+      t.belongs_to :user
       t.date :date
       t.string :name
       t.string :climbtype
