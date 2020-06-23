@@ -1,0 +1,18 @@
+<h1>Ticks#index</h1>
+<p>Find me in app/views/ticks/index.html.erb</p>
+
+<%= form_with url: new_tick_path, method: :get, local: true do |f| %>
+  <%= f.label "How many climbs would you like to add?" %>
+  <br>
+  <%= f.number_field('val[number]', in: 1..10) %>
+  <br>
+  <%= f.submit "Add" %>
+<% end %>
+
+<% @ticks.each do |tick|%>
+  <%= tick.date %>
+  <%= tick.name %>
+  <%= tick.grade %>
+  <%= link_to "Edit", edit_tick_path(tick.id) %>
+  <%= link_to "Delete", tick_path(tick.id), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>

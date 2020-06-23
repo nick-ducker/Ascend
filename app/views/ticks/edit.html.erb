@@ -1,0 +1,44 @@
+<h1>Ticks#edit</h1>
+<p>Find me in app/views/ticks/edit.html.erb</p>
+
+<%= form_for @tick do |f|%>
+<table>
+<tr>
+<th>
+  <%= f.label(:date,"Date of Ascent:") %>
+  <%= f.date_field(:date) %>
+</th>  
+<th>
+  <%= f.label("Name of Climb:") %>
+  <%= f.text_field(:name) %>
+</th>  
+<th>
+  <%= f.label("Type of Climb") %>
+  <%= f.select(:climbtype, options_for_select([["Sport"],["Trad"],["Boulder"],["Other"]])) %>
+</th>  
+<th>
+  <%= f.label("Grade of Climb") %>
+  <%= f.number_field(:grade, in: 1..39) %>
+</th>  
+<th>
+  <%= f.label("Style of Ascent:") %>
+  <%= f.select(:style, options_for_select([["Repeat"],["RP"],["Flash"],["OS"],["Dogged"],["DNF"]])) %>
+</th>  
+<th>
+  <%= f.label("Crag") %>
+  <%= f.text_field(:crag) %>
+</th>  
+<th>
+  <%= f.label("Comments") %>
+  <%= f.text_area(:comment) %>
+</th>  
+<th>
+  <%= f.label("Beta") %>
+  <%= f.text_area(:beta) %>
+</th>
+<th>
+  <%= f.submit("Update") %>
+</th>
+</tr>   
+</table>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-06-22
+  name: MyString
+  type: 
+  grade: 1
+  style: MyString
+  crag: MyString
+  comment: MyText
+  beta: MyText
+
+two:
+  date: 2020-06-22
+  name: MyString
+  type: 
+  grade: 1
+  style: MyString
+  crag: MyString
+  comment: MyText
+  beta: MyText
