@@ -1,14 +1,20 @@
 class TicksController < ApplicationController
   def index
+    authorize()
+
     @ticks = Tick.all
   end
 
   def new
+    authorize()
+
     @number = strong_new_params[:number].to_i
     puts @number
   end
 
   def create
+    authorize()
+
     @comparitive = comparitive_params()
     @successarray = Array.new
     @failurearray = Array.new
@@ -36,14 +42,20 @@ class TicksController < ApplicationController
   end
 
   def show
+    authorize()
+    
     @tick = Tick.find(params[:id])
   end
 
   def edit
+    authorize()
+
     @tick = Tick.find(params[:id])
   end
 
   def update
+    authorize()
+
     @tick = Tick.find(params[:id])
     if @tick.update(strong_params)
       redirect_to ticks_path
@@ -53,6 +65,8 @@ class TicksController < ApplicationController
   end
 
   def delete
+    authorize()
+
   end
 
   private
