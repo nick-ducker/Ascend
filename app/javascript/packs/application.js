@@ -18,3 +18,7 @@ require("channels")
 
 import '../stylesheets/application'
 import './bootstrap_custom.js'
+
+$('#myCarousel').carousel({
+  pause: 'none'
+})

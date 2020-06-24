@@ -1,1 +1,101 @@
 @import './bootstrap_custom.scss';
+
+html,body {
+  height:100%;
+width:100%;
+position:relative;
+}
+
+
+// CAROUSEL
+#background-carousel{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+.carousel,
+.carousel-inner {
+width:100%;
+height:100%;
+z-index:0;
+overflow:hidden;
+}
+.carousel-item {
+width:100%;
+height:100%;
+background-position:center center;
+background-size:cover;
+z-index:0;
+}
+
+#content-wrapper {
+position:absolute;
+z-index:1 !important;
+min-width:100%;
+min-height:100%;
+}
+.well {
+  opacity:0.85
+}
+
+.backone {
+  background-image: url(../images/hu-chen-EqnEmYuKKb4-unsplash);
+}
+
+.backtwo {
+  background-image: url(../images/IMG_3227.jpg);
+}
+
+.backthree {
+  background-image: url(../images/yns-plt-NY1D4Zni7fc-unsplash.jpg);
+}
+
+// LOGIN FORM
+.container{
+  height: 90%;
+  align-content: center;
+  }
+  
+  .card{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+  }
+  
+  .card-header h3{
+  color: white;
+  }
+  
+  .input-group-prepend span{
+  width: 50px;
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+  }
+  
+  input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+  
+  }
+  
+  .login_btn{
+  color: black;
+  background-color: #FFC312;
+  width: 100px;
+  }
+  
+  .login_btn:hover{
+  color: black;
+  background-color: white;
+  }
+
+  // ALERT
+
+.alert {
+  position: fixed;
+  width: 100%;
+  margin-top: auto;
+}

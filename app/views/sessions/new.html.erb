@@ -1,4 +1,16 @@
-<h1>Log In</h1>
+<div id="background-carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item backone active"></div>
+        <div class="carousel-item backtwo"></div>
+        <div class="carousel-item backthree"></div>  
+      </div>
+    </div>
+</div>
+
+<%
+=begin%>
+ <h1>Log In</h1>
 <%= form_for :login do |f| %>
   <div>
     <%= f.label :email %>
@@ -11,4 +23,38 @@
   <div>
     <%= f.submit "Log In" %>
   </div>
-<% end %>
+<% end %> 
+<%
+=end%>
+
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<%= form_for :login do |f| %>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<%= f.text_field :email, autofocus: true, class: "form-control" %>
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<%= f.password_field :password, class: "form-control" %>
+					</div>
+
+					
+					<div class="form-group">
+						<%= f.submit "Log In", class: "btn float-right login_btn" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
