@@ -1,35 +1,75 @@
-<%= form_with url: new_tick_path, method: :get, local: true do |f| %>
-  <%= f.label "How many climbs would you like to add?" %>
-  <br>
-  <%= f.number_field('val[number]', in: 1..10) %>
-  <br>
-  <%= f.submit "Add" %>
-<% end %>
-<br>
+<div class="background-index <%=@randomback%>"></div>
 
-<table>
-<tr>
-  <th>Date |</th>
-  <th>Name of Climb  |</th>
-  <th>Type of Climb  |</th>
-  <th>Grade of Climb  |</th>
-  <th>Style of Climb  |</th>
-  <th>Crag  |</th>
-  <th>Comments  |</th>
-  <th>Beta  |</th>
-  </tr>
-<% @ticks.each do |tick|%>
-  <tr>
-  <th><%= tick.date %></th>
-  <th><%= tick.name %></th>
-  <th><%= tick.climbtype %></th>
-  <th><%= tick.grade %></th>
-  <th><%= tick.style %></th>
-  <th><%= tick.crag %></th>
-  <th><%= tick.comment %></th>
-  <th><%= tick.beta %></th>
-  <th><%= link_to "Edit", edit_tick_path(tick.id) %></th>
-  <th><%= link_to "Delete", tick_path(tick.id), method: :delete, data: {confirm: "Are you sure?"} %></th>
-  </tr>
-<% end %>
-</table>
+<div class="container container-background">
+  <div class="row mt-5"></div>
+  <div class="row mt-4 mb-3">
+    <h1 class="col"><%= "Welcome home, #{current_user.name}" %><h1>
+    <div class="col mr-1">
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add more climbs? 
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 collapse mb-3" id="collapseExample">
+      <%= form_with url: new_tick_path, method: :get, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label "How many climbs would you like to add?" %>
+        <%= f.number_field 'val[number]', in: 1..10, class: "form-control mb-1 w-50" %>
+        <%= f.submit "Add", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col mb-3">
+      <%= form_for :search, url: new_search_path, local: true do |f| %>
+      <div class="form-row d-flex align-items-center w-50">
+        <%= f.label "Search by:" %>
+        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:Comments],["Beta",:Beta]]),{}, {class: "form-control col ml-2"} %>
+        <%= f.text_field :searchterm, class: "form-control col w-50 ml-1" %>
+        <%= f.submit "Search", class: "btn btn-primary col ml-1" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover col-lg">
+      <% @ticks.each_key do |key| %>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"><%= key %></th>
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Grade</th>
+          <th scope="col">Style</th>
+          <th scope="col">Crag</th>
+          <th scope="col">Comments</th>
+          <th scope="col">Beta</th>
+          <th scope="col">Edit</th>
+          <th scope="col">X</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ticks[key].each do |tick| %>
+          <tr>
+            <td></td>
+            <td class="text-white font-weight-bold"><%= tick.name.capitalize %></td>
+            <td class="text-white font-weight-bold"><%= tick.climbtype.capitalize %></td>
+            <td class="text-white font-weight-bold"><%= tick.grade %></td>
+            <td class="text-white font-weight-bold"><%= tick.style.capitalize %></td>
+            <td class="text-white font-weight-bold"><%= tick.crag.capitalize %></td>
+            <td class="text-white font-weight-bold"><%= tick.comment.capitalize %></td>
+            <td class="text-white font-weight-bold"><%= tick.beta.capitalize %></td>
+            <td><%= link_to "Edit", edit_tick_path(tick.id), class: "badge badge-info" %></td>
+            <td><%= link_to "Delete", tick_path(tick.id), method: :delete,class: "badge badge-danger", data: {confirm: "Are you sure?"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

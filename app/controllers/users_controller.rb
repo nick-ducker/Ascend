@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def new
+    redirect_to new_session_path
+
     @user = User.new
   end
 

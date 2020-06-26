@@ -1,13 +1,13 @@
 class TicksController < ApplicationController
   def index
     authorize()
-
-    @ticks = Tick.where(user_id: current_user.id) if current_user
+    @randomback = random_background
+    @ticks = Tick.where(user_id: current_user.id).group_by(&:date).sort.reverse.to_h if current_user
   end
 
   def new
     authorize()
-
+    @randomback = random_background
     @number = strong_new_params[:number].to_i
     puts @number
   end
@@ -25,7 +25,7 @@ class TicksController < ApplicationController
       tick = Tick.new
       datahash[key].each do |k,v|
         if @comparitive.include?(k)
-          tick[k.to_sym] = v
+          tick[k.to_sym] = v.class == String ? v.downcase : v 
         else
           next
         end
@@ -52,7 +52,7 @@ class TicksController < ApplicationController
 
   def edit
     authorize()
-
+    @randomback = random_background
     @tick = Tick.find(params[:id])
   end
 
