@@ -17,6 +17,10 @@ html,body {
 }
 
 .container-background {
+  position: fixed;
+  height: 100%;
+  width: 90%;
+  margin: 0 5%;
   background-color: rgba(0,0,0,0.3);
   color: white;
 }
@@ -67,7 +71,8 @@ min-height:100%;
 }
 
 // LOGIN FORM
-.container{
+.container {
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   }

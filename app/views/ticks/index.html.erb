@@ -1,6 +1,7 @@
 <div class="background-index <%=@randomback%>"></div>
+<div class="container-background"></div>
 
-<div class="container container-background">
+<div class="container">
   <div class="row mt-5"></div>
   <div class="row mt-4 mb-3">
     <h1 class="col"><%= "Welcome home, #{current_user.name}" %><h1>
@@ -36,40 +37,47 @@
     </div>
   </div>
 
-  <div class="row">
-    <table class="table table-hover col-lg">
-      <% @ticks.each_key do |key| %>
-      <thead class="thead-light">
-        <tr>
-          <th scope="col"><%= key %></th>
-          <th scope="col">Name</th>
-          <th scope="col">Type</th>
-          <th scope="col">Grade</th>
-          <th scope="col">Style</th>
-          <th scope="col">Crag</th>
-          <th scope="col">Comments</th>
-          <th scope="col">Beta</th>
-          <th scope="col">Edit</th>
-          <th scope="col">X</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @ticks[key].each do |tick| %>
+  <% if @ticks.empty? %>
+    <div class="row">
+      <h1 class="col mb-5 mt-5">Nothing matches your search! :(<h1>
+    </div>
+
+  <% else %>
+    <div class="row">
+      <table class="table table-hover col-lg">
+        <% @ticks.each_key do |key| %>
+        <thead class="thead-light">
           <tr>
-            <td></td>
-            <td class="text-white font-weight-bold"><%= tick.name.capitalize %></td>
-            <td class="text-white font-weight-bold"><%= tick.climbtype.capitalize %></td>
-            <td class="text-white font-weight-bold"><%= tick.grade %></td>
-            <td class="text-white font-weight-bold"><%= tick.style.capitalize %></td>
-            <td class="text-white font-weight-bold"><%= tick.crag.capitalize %></td>
-            <td class="text-white font-weight-bold"><%= tick.comment.capitalize %></td>
-            <td class="text-white font-weight-bold"><%= tick.beta.capitalize %></td>
-            <td><%= link_to "Edit", edit_tick_path(tick.id), class: "badge badge-info" %></td>
-            <td><%= link_to "Delete", tick_path(tick.id), method: :delete,class: "badge badge-danger", data: {confirm: "Are you sure?"} %></td>
+            <th scope="col"><%= key %></th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Style</th>
+            <th scope="col">Crag</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Beta</th>
+            <th scope="col">Edit</th>
+            <th scope="col">X</th>
           </tr>
+        </thead>
+        <tbody>
+          <% @ticks[key].each do |tick| %>
+            <tr>
+              <td></td>
+              <td class="text-white font-weight-bold"><%= tick.name.capitalize %></td>
+              <td class="text-white font-weight-bold"><%= tick.climbtype.capitalize %></td>
+              <td class="text-white font-weight-bold"><%= tick.grade %></td>
+              <td class="text-white font-weight-bold"><%= tick.style.capitalize %></td>
+              <td class="text-white font-weight-bold"><%= tick.crag.capitalize %></td>
+              <td class="text-white font-weight-bold"><%= tick.comment.capitalize %></td>
+              <td class="text-white font-weight-bold"><%= tick.beta.capitalize %></td>
+              <td><%= link_to "Edit", edit_tick_path(tick.id), class: "badge badge-info" %></td>
+              <td><%= link_to "Delete", tick_path(tick.id), method: :delete,class: "badge badge-danger", data: {confirm: "Are you sure?"} %></td>
+            </tr>
+          <% end %>
+        </tbody>
         <% end %>
-      </tbody>
-      <% end %>
-    </table>
-  </div>
+      </table>
+    </div>
+  <% end %>
 </div>
