@@ -1,46 +1,62 @@
-<h1>Ticks#new</h1>
+<div class="background-index <%=@randomback%>"></div>
 
-<%= form_with url: ticks_path, local: true do |f| %>
-<% n = 1 %>
-<table>
-<% @number.times do%>
-  <tr>
-    <th>
-      <%= label_tag("Date of Ascent:") %>
-      <%= date_field_tag("#{n}[date]") %>
-    </th>  
-    <th>
-      <%= label_tag("Name of Climb:") %>
-      <%= text_field_tag("#{n}[name]") %>
-    </th>  
-    <th>
-      <%= label_tag("Type of Climb") %>
-      <%= select_tag("#{n}[climbtype]", options_for_select([["Sport"],["Trad"],["Boulder"],["Other"]])) %>
-    </th>  
-    <th>
-      <%= label_tag("Grade of Climb") %>
-      <%= number_field_tag("#{n}[grade]", in: 1..39) %>
-    </th>  
-    <th>
-      <%= label_tag("Style of Ascent:") %>
-      <%= select_tag("#{n}[style]", options_for_select([["Repeat"],["RP"],["Flash"],["OS"],["Dogged"],["DNF"]])) %>
-    </th>  
-    <th>
-      <%= label_tag("Crag") %>
-      <%= text_field_tag("#{n}[crag]") %>
-    </th>  
-    <th>
-      <%= label_tag("Comments") %>
-      <%= text_area_tag("#{n}[comment]") %>
-    </th>  
-    <th>
-      <%= label_tag("Beta") %>
-      <%= text_area_tag("#{n}[beta]") %>
-    </th> 
-  </tr>   
-  <% n += 1 %>  
-<%end%>
-</table>
-<%= f.submit("Add") %>
-<%end%>
+<div class="container container-background">
+  <div class="row mt-5"></div>
+  <div class="row mt-4 mb-3">
+    <h1 class="col">Add your Ticks<h1>
+  </div>
+
+
+  <%= form_with url: ticks_path, local: true do |f| %>
+  <% n = 1 %>
+  
+    <% @number.times do%>
+    <div class=" form-group row">
+      <div class="col">
+      <%= date_field_tag "#{n}[date]",{}, class: "form-control" %>
+      </div>
+      <div class="col">
+      <%= text_field_tag "#{n}[name]", nil, placeholder: "Name", class: "form-control" %>
+      </div>
+
+      <div class="col">
+      <%= select_tag "#{n}[climbtype]", options_for_select([["Sport"],["Trad"],["Boulder"],["Other"]]),class: "form-control" %>
+      </div>
+
+      <div class="col">
+      <%= number_field_tag "#{n}[grade]",nil, in: 1..39, class: "form-control", placeholder: "Grade" %>
+      </div>
+
+      <div class="col">
+      <%= select_tag "#{n}[style]", options_for_select([["Repeat"],["RP"],["Flash"],["OS"],["Dogged"],["DNF"]]), class: "form-control" %>
+      </div>
+
+      <div class="col">
+      <%= text_field_tag "#{n}[crag]",nil, placeholder: "Crag", class: "form-control" %>
+      </div>
+
+      <div class="col">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#combetacollapse<%="#{n}"%>" aria-expanded="false" aria-controls="collapseExample">
+        Comments/Beta? 
+        </button>
+      </div>
+    </div>
+    <div class="col collapse" id="combetacollapse<%="#{n}"%>">
+      <div class="form-group row">
+        <div class="col">
+        <%= text_area_tag "#{n}[comment]", nil, placeholder: "Comments", class: "form-control" %>
+        </div>
+
+        <div class="col">
+        <%= text_area_tag "#{n}[beta]", nil, placeholder: "Beta", class: "form-control" %>
+        </div>
+      </div>
+    </div> 
+    <% n += 1 %> 
+    <%end%>
+
+  <%= f.submit "Add", class: "col btn btn-primary" %>
+  <%end%>
+
+</div>
 

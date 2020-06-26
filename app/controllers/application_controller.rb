@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_path, alert: 'You must be logged in to access this page.' if current_user.nil?
   end
+
+  def random_background
+    ["backone","backtwo","backthree"].shuffle.first
+  end
 end

@@ -1,44 +1,45 @@
-<h1>Ticks#edit</h1>
-<p>Find me in app/views/ticks/edit.html.erb</p>
+<div class="background-index <%=@randomback%>"></div>
 
-<%= form_for @tick do |f|%>
-<table>
-<tr>
-<th>
-  <%= f.label(:date,"Date of Ascent:") %>
-  <%= f.date_field(:date) %>
-</th>  
-<th>
-  <%= f.label("Name of Climb:") %>
-  <%= f.text_field(:name) %>
-</th>  
-<th>
-  <%= f.label("Type of Climb") %>
-  <%= f.select(:climbtype, options_for_select([["Sport"],["Trad"],["Boulder"],["Other"]])) %>
-</th>  
-<th>
-  <%= f.label("Grade of Climb") %>
-  <%= f.number_field(:grade, in: 1..39) %>
-</th>  
-<th>
-  <%= f.label("Style of Ascent:") %>
-  <%= f.select(:style, options_for_select([["Repeat"],["RP"],["Flash"],["OS"],["Dogged"],["DNF"]])) %>
-</th>  
-<th>
-  <%= f.label("Crag") %>
-  <%= f.text_field(:crag) %>
-</th>  
-<th>
-  <%= f.label("Comments") %>
-  <%= f.text_area(:comment) %>
-</th>  
-<th>
-  <%= f.label("Beta") %>
-  <%= f.text_area(:beta) %>
-</th>
-<th>
-  <%= f.submit("Update") %>
-</th>
-</tr>   
-</table>
-<% end %>
+<div class="container container-background">
+  <div class="row mt-5"></div>
+  <div class="row mt-4 mb-3">
+    <h1 class="col d-flex justify-content-center">Edit your Tick<h1>
+  </div>
+  <div class = "col d-flex justify-content-center">
+  <div class="card mb-5">
+    <div class="card-body">
+      <%= form_for @tick do |f|%>
+        <div class="form-group">
+        <%= f.date_field :date, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.select :climbtype, options_for_select([["Sport"],["Trad"],["Boulder"],["Other"]]),{}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.number_field :grade, in: 1..39, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.select :style, options_for_select([["Repeat"],["RP"],["Flash"],["OS"],["Dogged"],["DNF"]]), {}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.text_field :crag, class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.text_area :comment, placeholder: "Comments", class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.text_area :beta, placeholder: "Beta", class: "form-control" %>
+        </div>
+        <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+</div>
+
