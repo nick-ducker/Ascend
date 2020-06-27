@@ -32,15 +32,14 @@ class TicksController < ApplicationController
       end
       tick.user_id = current_user.id if current_user
       if tick.save
-        #@successarray << "Tick #{n} was saved successfully"
-        flash[:notice] = "Tick #{n} was saved successfully"
+        @successarray << "Tick #{n}"
       else
-        #@failurearray << "Tick #{n} did not save successfully :("
-        flash[:notice] = "Tick #{n} did not save successfully :("
+        @failurearray << "Tick #{n}"
       end
       n += 1
     end
 
+    flash[:notice] = "Saved: #{@successarray.join(', ')} // Not Saved: #{@failurearray.join(', ')}"
     redirect_to root_path
   end
 

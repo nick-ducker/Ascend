@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
-
+  get '/searches', to: 'ticks#index'
   post '/searches' , to: 'searches#new', as: :new_search
 
   resources :ticks
