@@ -66,9 +66,12 @@ class TicksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     authorize()
-
+    tick = Tick.find(params[:id])
+    tick.destroy
+    flash[:notice] = "Tick successfully deleted."
+    redirect_to root_path
   end
 
   private
