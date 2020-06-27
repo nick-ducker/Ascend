@@ -22,3 +22,13 @@ import './bootstrap_custom.js'
 $('#myCarousel').carousel({
   pause: 'none'
 })
+
+$(function () {
+  $('[data-toggle="popover"]').popover({
+    container: 'td'
+  })
+})
+
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})

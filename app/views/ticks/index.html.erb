@@ -71,8 +71,20 @@
               <td class="text-white font-weight-bold"><%= tick.grade %></td>
               <td class="text-white font-weight-bold"><%= tick.style.capitalize %></td>
               <td class="text-white font-weight-bold"><%= tick.crag.capitalize %></td>
-              <td class="text-white font-weight-bold"><%= tick.comment.capitalize %></td>
-              <td class="text-white font-weight-bold"><%= tick.beta.capitalize %></td>
+              <td class="text-white font-weight-bold">
+                <% if tick.comment.length > 0 %>
+                  <a tabindex="0" type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Comments" data-placement="bottom" data-content="<%= tick.comment.capitalize%>">Comments</a>
+                <% else %>
+                  <%= tick.comment.capitalize%>
+                <% end %>
+              </td>
+              <td class="text-white font-weight-bold">
+                <% if tick.beta.length > 0 %>
+                  <a tabindex="0" type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Beta" data-placement="bottom" data-content="<%= tick.beta.capitalize%>">Beta</a>
+                <% else %>
+                  <%= tick.beta.capitalize%>
+                <% end %>
+              </td>
               <td><%= link_to "Edit", edit_tick_path(tick.id), class: "badge badge-info" %></td>
               <td><%= link_to "Delete", tick_path(tick.id), method: :delete,class: "badge badge-danger", data: {confirm: "Are you sure?"} %></td>
             </tr>
