@@ -17,7 +17,7 @@
       <%= date_field_tag "#{n}[date]",{}, class: "form-control" %>
       </div>
       <div class="col">
-      <%= text_field_tag "#{n}[name]", nil, placeholder: "Name", class: "form-control" %>
+      <%= text_field_tag "#{n}[name]", nil, placeholder: "Name*", class: "form-control" %>
       </div>
 
       <div class="col">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="col">
-      <%= number_field_tag "#{n}[grade]",nil, in: 1..39, class: "form-control", placeholder: "Grade" %>
+      <%= number_field_tag "#{n}[grade]",nil, in: 1..39, class: "form-control", placeholder: "Grade*" %>
       </div>
 
       <div class="col">
@@ -33,7 +33,7 @@
       </div>
 
       <div class="col">
-      <%= text_field_tag "#{n}[crag]",nil, placeholder: "Crag", class: "form-control" %>
+      <%= text_field_tag "#{n}[crag]",nil, placeholder: "Crag*", class: "form-control" %>
       </div>
 
       <div class="col">
