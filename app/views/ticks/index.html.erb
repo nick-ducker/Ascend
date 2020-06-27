@@ -29,9 +29,9 @@
       <%= form_for :search, url: new_search_path, local: true do |f| %>
       <div class="form-row d-flex align-items-center w-50">
         <%= f.label "Search by:" %>
-        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:Comments],["Beta",:Beta]]),{}, {class: "form-control col ml-2"} %>
-        <%= f.text_field :searchterm, class: "form-control col w-50 ml-1" %>
-        <%= f.submit "Search", class: "btn btn-primary col ml-1" %>
+        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:Comments],["Beta",:Beta]]),{}, {class: "form-control col ml-2 mb-1"} %>
+        <%= f.text_field :searchterm, class: "form-control col w-50 ml-1 mb-1" %>
+        <%= f.submit "Search", class: "btn btn-primary col ml-1 mb-1" %>
       </div>
       <% end %>
     </div>
@@ -43,8 +43,8 @@
     </div>
 
   <% else %>
-    <div class="row">
-      <table class="table table-hover col-lg">
+    <div class="table-responsive">
+      <table class="table table-hover col">
         <% n = 1 %>
         <% @ticks.each_key do |key| %>
         <thead class="thead-light">
@@ -73,14 +73,14 @@
               <td class="text-white font-weight-bold"><%= tick.crag.capitalize %></td>
               <td class="text-white font-weight-bold">
                 <% if tick.comment.length > 0 %>
-                  <a tabindex="0" type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Comments" data-placement="bottom" data-content="<%= tick.comment.capitalize%>">Comments</a>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Comments" data-html="true" data-content="<%= tick.comment.capitalize%>">Comments</button>
                 <% else %>
                   <%= tick.comment.capitalize%>
                 <% end %>
               </td>
               <td class="text-white font-weight-bold">
                 <% if tick.beta.length > 0 %>
-                  <a tabindex="0" type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Beta" data-placement="bottom" data-content="<%= tick.beta.capitalize%>">Beta</a>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" title="Beta" data-html="true" data-content="<%= tick.beta.capitalize%>">Beta</button>
                 <% else %>
                   <%= tick.beta.capitalize%>
                 <% end %>

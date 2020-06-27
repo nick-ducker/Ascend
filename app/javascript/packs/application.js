@@ -25,7 +25,8 @@ $('#myCarousel').carousel({
 
 $(function () {
   $('[data-toggle="popover"]').popover({
-    container: 'td'
+    container: 'table',
+    
   })
 })
 
