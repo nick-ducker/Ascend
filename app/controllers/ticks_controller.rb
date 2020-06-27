@@ -39,7 +39,8 @@ class TicksController < ApplicationController
       n += 1
     end
 
-    flash[:notice] = "Saved: #{@successarray.join(', ')} // Not Saved: #{@failurearray.join(', ')}"
+    flash[:notice] = "Saved: #{@successarray.join(', ')}"
+    flash[:alert] = "Not Saved: #{@failurearray.join(', ')}"
     redirect_to root_path
   end
 
