@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get '/searches', to: 'ticks#index'
   post '/searches' , to: 'searches#new', as: :new_search
 
+  get '/help', to: 'staticpages#help', as: :help
+
   resources :ticks
 end

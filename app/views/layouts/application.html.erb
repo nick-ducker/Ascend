@@ -20,12 +20,14 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><span class="nav-link"><%= "Logged in as #{current_user.name}" %></span></li>
+          <li class="nav-item"><%= link_to 'Help', help_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'Log Out', logout_path, method: :delete, class: "nav-link" %></li>
         </ul>
       </div>
     <% else %>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to 'Help', help_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'Log In', login_path, class: "nav-link" %></li>
         </ul>
       </div>
