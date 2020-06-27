@@ -29,7 +29,7 @@
       <%= form_for :search, url: new_search_path, local: true do |f| %>
       <div class="form-row d-flex align-items-center w-50">
         <%= f.label "Search by:" %>
-        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:Comments],["Beta",:Beta]]),{}, {class: "form-control col ml-2 mb-1"} %>
+        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:crag],["Comments",:comment],["Beta",:Beta]]),{}, {class: "form-control col ml-2 mb-1"} %>
         <%= f.text_field :searchterm, class: "form-control col w-50 ml-1 mb-1" %>
         <%= f.submit "Search", class: "btn btn-primary col ml-1 mb-1" %>
       </div>

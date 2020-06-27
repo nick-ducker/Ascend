@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
         term[:searchterm] = term[:searchterm].downcase
     end
 
-    @ticks = Tick.where("#{term[:searchtype]} LIKE ?", "%#{term[:searchterm]}%").group_by(&:date)
+    @ticks = Tick.where("#{term[:searchtype]} LIKE ?", "%#{term[:searchterm]}%").group_by(&:date).sort.reverse.to_h
 
     pp @ticks
 
