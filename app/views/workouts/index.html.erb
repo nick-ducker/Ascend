@@ -1,0 +1,80 @@
+<div class="background-index <%=@randomback%>"></div>
+<div class="container-background"></div>
+<div class="spacer"></div>
+
+
+<div class="row text-white">
+  <div class="col-2">
+  <h1 class="">Workouts</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur consectetur pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut imperdiet nibh ut augue tincidunt, non euismod nisl feugiat. Vivamus laoreet finibus mi non tristique. Nunc rhoncus, felis euismod sodales euismod, augue massa rhoncus. </p>
+  </div>
+  
+  <div class="col">
+    <div class="row mt-1">
+      <div class="nav nav-tabs col" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-myworkouts" role="tab" aria-controls="nav-myworkouts" aria-selected="true">My Workouts</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-allworkouts" role="tab" aria-controls="nav-allworkouts" aria-selected="false">All Workouts</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-favorites" role="tab" aria-controls="nav-favorites" aria-selected="false">Favorites</a>
+        <%= link_to "New Workout", new_workout_path, class: "btn btn-primary ml-auto mr-1 mb-1"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="tab-content" id="nav-tabContent">
+
+        <div class="tab-pane fade show active" id="nav-myworkouts" role="tabpanel" aria-labelledby="nav-myworkouts-tab">
+          <div class="card-columns">
+            <%#@myworkouts.each do |workout| %>
+              <div class="card m-1">
+                <div class= "card-header">
+                  <span class="badge badge-primary">type</span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">author</h6>
+                  <p class="card-text">shortened desciption</p>
+                  <p class="card-text"><small class="text-muted">date published</small></p>
+                </div>
+              </div>
+            <% #end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-allworkouts" role="tabpanel" aria-labelledby="nav-allworkouts-tab">
+          <div class="card-columns">
+            <%#@allworkouts.each do |workout| %>
+              <div class="card m-1">
+                <div class= "card-header">
+                  <span class="badge badge-primary">type</span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">author</h6>
+                  <p class="card-text">shortened desciption</p>
+                  <p class="card-text"><small class="text-muted">date published</small></p>
+                </div>
+              </div>
+            <% #end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-favorites" role="tabpanel" aria-labelledby="nav-favorites-tab">
+          <div class="card-columns">
+            <%#@favworkouts.each do |workout| %>
+              <div class="card m-1">
+                <div class= "card-header">
+                  <span class="badge badge-primary">type</span>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">author</h6>
+                  <p class="card-text">shortened desciption</p>
+                  <p class="card-text"><small class="text-muted">date published</small></p>
+                </div>
+              </div>
+            <% #end %>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+</div>
