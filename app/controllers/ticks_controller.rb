@@ -9,7 +9,6 @@ class TicksController < ApplicationController
     authorize()
     @randomback = random_background
     @number = strong_new_params[:number].to_i
-    puts @number
   end
 
   def create

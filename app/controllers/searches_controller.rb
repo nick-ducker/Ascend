@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
 
-  def new
+  def ticksearch
     @randomback = random_background
     term = strong_search
 

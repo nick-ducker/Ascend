@@ -5,11 +5,16 @@ class ApplicationController < ActionController::Base
     @current_user = User.find(session[:user_id]) if session[:user_id]
   end
 
+  def logged_in_user
+    return true if session[:user_id]
+    return false
+  end
+
   def authorize
     redirect_to login_path, alert: 'You must be logged in to access this page.' if current_user.nil?
   end
 
   def random_background
-    ["backone","backtwo","backthree"].shuffle.first
+    @randomback = ["backone","backtwo","backthree"].shuffle.first
   end
 end
