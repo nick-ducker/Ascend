@@ -5,15 +5,18 @@ class WorkoutsController < ApplicationController
   def index
     @loggedin = logged_in_user
     @allworkouts = Workout.where(shared: true)
-    @myworkouts = Workout.where(user_id: current_user.id)
 
     # must iterate through collection on desktop
-    @favworkouts = Array.new
+    if current_user
+      @myworkouts = Workout.where(user_id: current_user.id)
+      
+      @favworkouts = Array.new
 
-    current_user.favorite_workouts.each do |fav|
-      @favworkouts << fav.workout
+      current_user.favorite_workouts.each do |fav|
+        @favworkouts << fav.workout
+      end
     end
-    
+
   end
 
   def new
