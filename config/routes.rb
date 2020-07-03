@@ -9,8 +9,14 @@ Rails.application.routes.draw do
 
   root 'ticks#index'
 
-  get 'users/new', to: 'users#new', as: :new_user
-  post 'users', to: 'users#create'
+  # get 'users/new', to: 'users#new', as: :new_user
+  # post 'users', to: 'users#create'
+  resources :users do
+    resources :workouts
+    resources :plans
+    resources :periods
+    resources :favorites
+  end
 
   get '/login', to: 'sessions#new', as: :new_session
   post '/login', to: 'sessions#create'
