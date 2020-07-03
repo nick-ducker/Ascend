@@ -5,6 +5,9 @@ ruby '2.7.0'
 
 gem 'bcrypt', '~> 3.1.7'
 
+# Icon package
+gem 'octicons_helper'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record

@@ -12,9 +12,9 @@
   <div class="col">
     <div class="row mt-1">
       <div class="nav nav-tabs col" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-myworkouts" role="tab" aria-controls="nav-myworkouts" aria-selected="true">My Workouts</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-allworkouts" role="tab" aria-controls="nav-allworkouts" aria-selected="false">All Workouts</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-favorites" role="tab" aria-controls="nav-favorites" aria-selected="false">Favorites</a>
+        <a class="nav-item nav-link text-white active" id="nav-home-tab" data-toggle="tab" href="#nav-myworkouts" role="tab" aria-controls="nav-myworkouts" aria-selected="true">My Workouts</a>
+        <a class="nav-item nav-link text-white" id="nav-profile-tab" data-toggle="tab" href="#nav-allworkouts" role="tab" aria-controls="nav-allworkouts" aria-selected="false">All Workouts</a>
+        <a class="nav-item nav-link text-white" id="nav-contact-tab" data-toggle="tab" href="#nav-favorites" role="tab" aria-controls="nav-favorites" aria-selected="false">Favorites</a>
         <%= link_to "New Workout", new_workout_path, class: "btn btn-primary ml-auto mr-1 mb-1"%>
       </div>
     </div>
@@ -25,8 +25,14 @@
           <div class="card-columns">
             <%#@myworkouts.each do |workout| %>
               <div class="card m-1">
-                <div class= "card-header">
+                <div class= "card-header d-flex justify-space-between align-items-center">
                   <span class="badge badge-primary">type</span>
+                  <% if current_user %>
+                    <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
+                      <%= octicon "star-fill", :height => 24, class: "favorite" %>
+                    <% else %>
+                      <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                  <% end %>
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>

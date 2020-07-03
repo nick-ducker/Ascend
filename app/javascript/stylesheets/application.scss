@@ -156,3 +156,9 @@ thead {
     box-shadow: 0 5px 15px 0px black;
   }
 }
+
+//Navtabs styling
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
