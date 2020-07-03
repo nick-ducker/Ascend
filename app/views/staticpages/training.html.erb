@@ -1,0 +1,38 @@
+<div class="background-index <%=@randomback%>"></div>
+<div class="spacer"></div>
+<div class="container align-items-center mt-5">
+  <div class="card-deck">
+    <div class="card hoverable">
+      <%= link_to(workouts_path) do %>
+      <%= image_tag("hangboard.jpg", :alt => "hangboard", class: "card-img-top") %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">Workouts</h5>
+        <p class="card-text">Training focused on just a day's worth of time, from the gym to the crag.</p>
+      </div>
+    </div>
+    
+    
+    <div class="card hoverable">
+      <%= link_to(periods_path) do %>
+      <%= image_tag("circuit.jpg", :alt => "a person bouldering", class: "card-img-top") %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">Schemes</h5>
+        <p class="card-text">Fitting workouts together into a more well rounded training approach, up to 30 days in length</p>
+      </div>
+      
+    </div>
+    
+    <div class="card hoverable">
+      <%= link_to(plans_path) do %>
+      <%= image_tag("journal.jpg", :alt => "a person writing in a journal", class: "card-img-top") %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">Plans</h5>
+        <p class="card-text">Bringing schemes together into a long term training plan, from several months to a year.</p>
+      </div>
+    </div> 
+    
+  </div>
+</div>

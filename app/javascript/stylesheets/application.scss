@@ -83,7 +83,7 @@ min-height:100%;
   margin-right: auto;
   }
   
-  .card{
+  .logincard{
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
@@ -139,4 +139,20 @@ thead {
 
 .table {
   z-index: 1000;
+}
+
+//trainingpage cardgroup
+
+.card {
+  background-color: rgba(0,0,0,0.5) !important;
+}
+
+.hoverable {
+  transition: 1s;
+  box-shadow: 0 0px 0px 0px black;
+  
+  &:hover {
+    background-color: rgba(41, 41, 41, 0.5) !important;
+    box-shadow: 0 5px 15px 0px black;
+  }
 }

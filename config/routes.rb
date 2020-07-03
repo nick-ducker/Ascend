@@ -11,12 +11,7 @@ Rails.application.routes.draw do
 
   # get 'users/new', to: 'users#new', as: :new_user
   # post 'users', to: 'users#create'
-  resources :users do
-    resources :workouts
-    resources :plans
-    resources :periods
-    resources :favorites
-  end
+  resources :users
 
   get '/login', to: 'sessions#new', as: :new_session
   post '/login', to: 'sessions#create'
@@ -27,6 +22,11 @@ Rails.application.routes.draw do
   post '/searches' , to: 'searches#new', as: :new_search
 
   get '/help', to: 'staticpages#help', as: :help
+  get '/training', to: 'staticpages#training', as: :training
 
   resources :ticks
+  resources :workouts
+  resources :plans
+  resources :periods
+  resources :favorites
 end
