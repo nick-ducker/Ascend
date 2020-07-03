@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  type: 
+  description: MyText
+  days: 1
+  shared: false
+  user: one
+
+two:
+  title: MyString
+  type: 
+  description: MyText
+  days: 1
+  shared: false
+  user: two
