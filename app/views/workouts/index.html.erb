@@ -23,32 +23,38 @@
     <div class="row">
       <div class="tab-content" id="nav-tabContent">
 
-        <div class="tab-pane fade show active" id="nav-myworkouts" role="tabpanel" aria-labelledby="nav-myworkouts-tab">
+        <div class="tab-pane fade show" id="nav-myworkouts" role="tabpanel" aria-labelledby="nav-myworkouts-tab">
           <div class="card-columns">
-            <%#@myworkouts.each do |workout| %>
-              <div class="card m-1">
-                <div class= "card-header d-flex align-items-center">
-                  <span class="badge badge-primary">type</span>
-                  <% if current_user %>
-                    <% #if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
-                      <%= octicon "star-fill", :height => 24, class: "favorite ml-auto" %>
-                    <% #else %>
-                      <%= octicon "star-fill", :height => 24, class: "notfavorite ml-auto" %>
-                    <% #end %>
-                  <% end %>
+            <% if @myworkouts%>
+              <%@myworkouts.each do |workout| %>
+                <div class="card m-1">
+                  <div class= "card-header d-flex align-items-center justify-content-between">
+                    <span class="badge badge-primary"><%= workout.category %></span>
+                    <% if current_user %>
+                      <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
+                        <%= link_to favorites_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                          <%= octicon "star-fill", :height => 24, class: "favorite" %>
+                        <% end %>
+                      <% else %>
+                        <% octicon "star-fill", :height => 24, class: "notfavorite" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= workout.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Author: <%= workout.user.name %></h6>
+                    <p class="card-text"><%= workout.description.chars.first(50).join %>...</p>
+                    <p class="card-text"><small class="text-muted"><%= workout.created_at.to_date %></small></p>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">author</h6>
-                  <p class="card-text">shortened desciption</p>
-                  <p class="card-text"><small class="text-muted">date published</small></p>
-                </div>
-              </div>
-            <% #end %>
+              <% end %>
+            <% else %>
+              <h2>You haven't created any workouts yet</h2>
+            <% end %>
           </div>
         </div>
 
-        <div class="tab-pane fade" id="nav-allworkouts" role="tabpanel" aria-labelledby="nav-allworkouts-tab">
+        <div class="tab-pane fade show active" id="nav-allworkouts" role="tabpanel" aria-labelledby="nav-allworkouts-tab">
           <div class="card-columns">
             <%#@allworkouts.each do |workout| %>
               <div class="card m-1">
