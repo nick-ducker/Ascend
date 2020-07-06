@@ -21,10 +21,17 @@ class WorkoutsController < ApplicationController
 
   def new
     authorize()
+    @workout = Workout.new
   end
 
   def create
     authorize()
+    if current_user.workouts.create(strong_create_params)
+      redirect_to workouts_path, notice: "Workout Created!"
+    else
+      flash.now.alert = "Workout could not be created. Check your fields and try again"
+      render :new
+    end
   end
 
   def show
@@ -40,6 +47,12 @@ class WorkoutsController < ApplicationController
   def update
     authorize()
     @workout = Workout.find(params[:id])
+  end
+
+private
+
+  def strong_create_params
+    params.require(:workout).permit(:title, :category, :shared, :description)
   end
 
 end

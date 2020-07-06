@@ -4,4 +4,10 @@ class Workout < ApplicationRecord
 
   has_many :periods_workouts
   has_many :periods, through: :periods_workouts
+
+  validates :title, presence: true
+  validates :category, presence: true
+  validates :description, presence: true
+  validates :shared, presence: true
+  validates :email, presence: true
 end
