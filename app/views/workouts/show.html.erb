@@ -1,3 +1,26 @@
 <div class="background-index <%=@randomback%>"></div>
 <div class="container-background"></div>
 <div class="spacer"></div>
+
+<div class="container text-dark">
+  <div class="jumbotron">
+    <% if current_user %>
+      <% if current_user.favorite_workouts.find_by(workout_id: @workout.id) %>
+        <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: @workout.id}), method: "post" do %>
+          <%= octicon "star-fill", :height => 24, class: "favorite" %>
+        <% end %>
+      <% else %>
+        <%= link_to add_favorite_path(favparams: {user_id: current_user.id, workout_id: @workout.id}), method: "post" do %>
+          <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <span class="badge badge-primary"><%= @workout.category %></span>
+    <h1 class="display-4"><%= @workout.title %></h1>
+    <p class="lead">Author: <%= @workout.user.name %></p>
+    <hr class="my-4">
+    <p><%= @workout.description %></p>
+    <small><%= @workout.created_at.to_date %></small>
+  </div>
+  <%= link_to "Back to Workouts", workouts_path, class: "btn btn-primary" %>
+</div>
