@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   resources :workouts
   resources :plans
   resources :periods
-  resources :favorites
+  #resources :favorites
+  post '/newfavorite', to: 'favorites#add', as: :add_favorite
+  post '/removefavorite', to: 'favorites#remove', as: :remove_favorite
 end
