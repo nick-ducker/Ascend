@@ -32,11 +32,13 @@
                     <span class="badge badge-primary"><%= workout.category %></span>
                     <% if current_user %>
                       <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
-                        <%= link_to favorites_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                        <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
                           <%= octicon "star-fill", :height => 24, class: "favorite" %>
                         <% end %>
                       <% else %>
-                        <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                        <%= link_to add_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                          <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                        <% end %>
                       <% end %>
                     <% end %>
                   </div>
@@ -67,11 +69,13 @@
                     <span class="badge badge-primary"><%= workout.category %></span>
                     <% if current_user %>
                       <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
-                        <%= link_to favorites_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                        <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
                           <%= octicon "star-fill", :height => 24, class: "favorite" %>
                         <% end %>
                       <% else %>
-                        <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                        <%= link_to add_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                          <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                        <% end %>
                       <% end %>
                     <% end %>
                   </div>
@@ -102,11 +106,13 @@
                   <span class="badge badge-primary"><%= workout.category %></span>
                   <% if current_user %>
                     <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
-                      <%= link_to favorites_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                      <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
                         <%= octicon "star-fill", :height => 24, class: "favorite" %>
                       <% end %>
                     <% else %>
-                      <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                      <%= link_to add_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+                        <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>
