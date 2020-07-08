@@ -2,13 +2,13 @@ class FavoritesController < ApplicationController
 
   def add
     FavoriteWorkout.create(favorite_params)
-    redirect_to workouts_path
+    redirect_to request.referrer
   end
 
   def remove
     fav = FavoriteWorkout.find_by(user_id: favorite_params[:user_id], workout_id: favorite_params[:workout_id])
     fav.destroy
-    redirect_to workouts_path
+    redirect_to request.referrer
   end
 
 private

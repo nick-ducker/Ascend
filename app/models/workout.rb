@@ -9,5 +9,5 @@ class Workout < ApplicationRecord
   validates :category, presence: true
   validates :description, presence: true
   validates :shared, presence: true
-  validates :email, presence: true
+  
 end

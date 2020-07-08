@@ -2,8 +2,8 @@
 <div class="container-background"></div>
 <div class="spacer"></div>
 
-<div class="container text-dark">
-  <div class="jumbotron">
+<div class="container h-80 text-dark">
+  <div class="jumbotron w-100">
     <% if current_user %>
       <% if current_user.favorite_workouts.find_by(workout_id: @workout.id) %>
         <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: @workout.id}), method: "post" do %>
@@ -22,5 +22,8 @@
     <p><%= @workout.description %></p>
     <small><%= @workout.created_at.to_date %></small>
   </div>
-  <%= link_to "Back to Workouts", workouts_path, class: "btn btn-primary" %>
+  
+  <%= link_to "Edit", edit_workout_path(@workout), class: "btn btn-warning" %>
+  <%= link_to "Delete", workout_path(@workout), method: :delete, class: "btn btn-danger" %>
+  <%= link_to "Back to Workouts", workouts_path, class: "btn btn-primary float-right" %>
 </div>
