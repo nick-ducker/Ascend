@@ -41,7 +41,10 @@ class WorkoutsController < ApplicationController
 
   def edit
     authorize()
-    @workout = Workout.find(params[:id])
+	@workout = Workout.find(params[:id])
+	if current_user[:id] != @workout.user_id
+		redirect_to workouts_path, notice: "Cannot edit other users Workouts."
+	end
   end
   
   def update
@@ -54,6 +57,17 @@ class WorkoutsController < ApplicationController
       flash.now.alert = "Workout could not be updated. Check your fields and try again"
       render :edit
     end
+  end
+
+  def destroy
+	authorize()
+	@workout = Workout.find(params[:id])
+	if current_user[:id] != @workout.user_id
+		redirect_to workouts_path, notice: "Cannot delete other users Workouts."
+	else
+		@workout.destroy
+		redirect_to workouts_path, notice: "Workout Deleted!"
+	end
   end
 
 private
