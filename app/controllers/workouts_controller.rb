@@ -60,14 +60,14 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-	authorize()
-	@workout = Workout.find(params[:id])
-	if current_user[:id] != @workout.user_id
-		redirect_to workouts_path, notice: "Cannot delete other users Workouts."
-	else
-		@workout.destroy
-		redirect_to workouts_path, notice: "Workout Deleted!"
-	end
+    authorize()
+    @workout = Workout.find(params[:id])
+    if current_user[:id] != @workout.user_id
+      redirect_to workouts_path, notice: "Cannot delete other users Workouts."
+    else
+      @workout.destroy
+      redirect_to workouts_path, notice: "Workout Deleted!"
+    end
   end
 
 private

@@ -3,9 +3,17 @@
 <div class="spacer"></div>
 
 
-<div class="row text-white">
-  <div class="col-2">
+<div class="row w-100 m-auto text-white">
+  <div class="col">
   <h1 class="">Workouts</h1>
+  <%= form_for :search, url: tick_search_path, local: true do |f| %>
+      <div class="form-row d-flex align-items-center w-50">
+        <%= f.label "Search by:" %>
+        <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:crag],["Comments",:comment],["Beta",:Beta]]),{}, {class: "form-control col ml-2 mb-1"} %>
+        <%= f.text_field :searchterm, class: "form-control col w-50 ml-1 mb-1" %>
+        <%= f.submit "Search", class: "btn btn-primary col ml-1 mb-1" %>
+      </div>
+      <% end %>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur consectetur pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut imperdiet nibh ut augue tincidunt, non euismod nisl feugiat. Vivamus laoreet finibus mi non tristique. Nunc rhoncus, felis euismod sodales euismod, augue massa rhoncus. </p>
   </div>
   
