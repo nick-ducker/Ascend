@@ -1,0 +1,29 @@
+<% if workout %>
+<div class="container h-80 text-dark">
+  <div class="jumbotron w-100">
+    <% if current_user %>
+      <% if current_user.favorite_workouts.find_by(workout_id: workout.id) %>
+        <%= link_to remove_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+          <%= octicon "star-fill", :height => 24, class: "favorite" %>
+        <% end %>
+      <% else %>
+        <%= link_to add_favorite_path(favparams: {user_id: current_user.id, workout_id: workout.id}), method: "post" do %>
+          <%= octicon "star-fill", :height => 24, class: "notfavorite" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <span class="badge badge-primary"><%= workout.category %></span>
+    <h1 class="display-4"><%= workout.title %></h1>
+    <p class="lead">Author: <%= workout.user.name %></p>
+    <hr class="my-4">
+    <p><%= workout.description %></p>
+    <small><%= workout.created_at.to_date %></small>
+  </div>
+  
+  <% if current_user[:id] == workout.user_id %>
+    <%= link_to "Edit", edit_workout_path(workout), class: "btn btn-warning" %>
+    <%= link_to "Delete", workout_path(workout), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+  <% end %>
+  <%= link_to "Back to Workouts", workouts_path, class: "btn btn-primary float-right" %>
+</div>
+<% end %>
