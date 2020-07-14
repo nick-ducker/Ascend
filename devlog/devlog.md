@@ -1,7 +1,7 @@
 # 13/07/2020
 
 ## Bugfix
-  * Get the 
+  * Get the sign up to display a sign up successful notice 
   * Fix create form for new workout
       Moved form helpers to outside of the page divs to have the new button functional on first load.
       Button worked on manual test but styling was wrong.
@@ -20,5 +20,11 @@
   * Other users should not be able to delete other peoples posts. 
     Added user validation before running destroy in the delete action
     On manual test, could not delete post by replacing html button code.
+
+  * Users can search through through workouts from the all workouts page, results turn up in the all workouts tab.
+      WORKING
+
+  * Users can upload a photograph to their workout
+
 
   
