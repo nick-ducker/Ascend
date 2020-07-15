@@ -18,8 +18,10 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
-  get '/searches', to: 'ticks#index'
-  post '/searches' , to: 'searches#ticksearch', as: :tick_search
+  #get '/search', to: 'ticks#index'
+  post '/ticksearch' , to: 'searches#ticksearch', as: :tick_search
+  post '/workoutsearch' , to: 'searches#workoutsearch', as: :workout_search
+
 
   get '/help', to: 'staticpages#help', as: :help
   get '/training', to: 'staticpages#training', as: :training

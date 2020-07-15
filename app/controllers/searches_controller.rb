@@ -1,7 +1,6 @@
 class SearchesController < ApplicationController
 
   def ticksearch
-    @randomback = random_background
     term = strong_search
 
     case
@@ -15,15 +14,30 @@ class SearchesController < ApplicationController
 
     @ticks = Tick.where("#{term[:searchtype]} LIKE ?", "%#{term[:searchterm]}%").group_by(&:date).sort.reverse.to_h
 
-    pp @ticks
-
     render "ticks/index"
+  end
+
+  def workoutsearch
+
+    term = strong_search
+
+    case
+    when term[:searchtype] == "date"
+      term[:searchtype] = "cast(date as text)"
+    else
+      term[:searchterm] = term[:searchterm].downcase
+    end
+
+    @allworkouts = Workout.where("#{term[:searchtype]} LIKE ?", "%#{term[:searchterm]}%").select{|work| work.shared == true}
+
+    render "workouts/index"
+
   end
 
 private
 
   def strong_search
-    params.require(:search).permit(:searchterm, :searchtype)
+    term = params.require(:search).permit(:searchterm, :searchtype)
   end
 
 end
