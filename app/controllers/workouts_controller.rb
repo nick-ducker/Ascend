@@ -6,6 +6,9 @@ class WorkoutsController < ApplicationController
     @loggedin = logged_in_user
     @allworkouts = Workout.where(shared: true)
 
+    if workout_select_params != nil
+      @selected_workout = Workout.find(workout_select_params[:workout_id])
+    end
     # must iterate through collection on desktop
     if current_user
       @myworkouts = Workout.where(user_id: current_user.id)
@@ -71,6 +74,10 @@ class WorkoutsController < ApplicationController
   end
 
 private
+
+  def workout_select_params
+    params.require(:workoutparams).permit(:workout_id) if params[:workoutparams]
+  end 
 
   def strong_workout_params
     params.require(:workout).permit(:title, :category, :shared, :description)

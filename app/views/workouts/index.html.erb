@@ -3,22 +3,24 @@
 <div class="spacer"></div>
 
 
-<div class="row w-100 m-auto text-white">
-  <div class="col">
-  <h1 class="">Workouts</h1>
-  <%= form_for :search, url: tick_search_path, local: true do |f| %>
-    <div class="form-row d-flex align-items-center w-50">
-      <%= f.label "Search by:" %>
-      <%= f.select :searchtype, options_for_select([["Date",:date],["Name",:name],["Type",:climbtype],["Grade",:grade],["Style",:style],["Crag",:crag],["Comments",:comment],["Beta",:Beta]]),{}, {class: "form-control col ml-2 mb-1"} %>
-      <%= f.text_field :searchterm, class: "form-control col w-50 ml-1 mb-1" %>
-      <%= f.submit "Search", class: "btn btn-primary col ml-1 mb-1" %>
+<div class="row text-white">
+  <div class="col-sml m-auto">
+    <div class="container m-2">
+    <h1 class="">Workouts</h1>
+      <%= form_for :search, url: workout_search_path, local: true do |f| %>
+        <div class="form-row">
+          <%= f.label "Search by:" %>
+          <%= f.select :searchtype, options_for_select([["Date",:date],["Title",:title],["Author",:name],["Category",:category],["Description",:description]]),{}, {class: "form-control col ml-2 mb-1"} %>
+          <%= f.text_field :searchterm, class: "form-control col w-50 ml-1 mb-1" %>
+          <%= f.submit "Search", class: "btn btn-primary col ml-1 mb-1" %>
+        </div>
+      <% end %>
+      <%= render partial: 'common/workout_show', locals: {workout: @selected_workout}%>
     </div>
-  <% end %>
-  <%= render partial: 'common/workout_show', locals: {workout: @selected_workout}%>
   </div>
   
   <div class="col">
-    <div class="row mt-1">
+    <div class="row m-1">
       <div class="nav nav-tabs col" id="nav-tab" role="tablist">
         <a class="nav-item nav-link active text-white" id="nav-profile-tab" data-toggle="tab" href="#nav-allworkouts" role="tab" aria-controls="nav-allworkouts" aria-selected="false">All Workouts</a>
         <% if current_user %>
@@ -28,7 +30,7 @@
         <% end %>
       </div>
     </div>
-    <div class="row">
+    <div class="row m-1">
       <div class="tab-content mr-4" id="nav-tabContent">
 
         <div class="tab-pane fade show" id="nav-myworkouts" role="tabpanel" aria-labelledby="nav-myworkouts-tab">
@@ -51,7 +53,7 @@
                     <% end %>
                   </div>
                   <div class="card-body">
-                  <%= link_to workout_path(workout.id) do %>
+                  <%= link_to workouts_path(workoutparams: {workout_id: workout.id}) do %>
                     <h5 class="card-title"><%= workout.title %></h5>
                   <% end %>
                     <h6 class="card-subtitle mb-2 text-muted">Author: <%= workout.user.name %></h6>
@@ -91,7 +93,7 @@
                     <% end %>
                   </div>
                   <div class="card-body">
-                  <%= link_to workout_path(workout.id) do %>
+                  <%= link_to workouts_path(workoutparams: {workout_id: workout.id}) do %>
                     <h5 class="card-title"><%= workout.title %></h5>
                   <% end %>
                     <h6 class="card-subtitle mb-2 text-muted">Author: <%= workout.user.name %></h6>
@@ -130,7 +132,7 @@
                   <% end %>
                 </div>
                 <div class="card-body">
-                <%= link_to workout_path(workout.id) do %>
+                <%= link_to workouts_path(workoutparams: {workout_id: workout.id}) do %>
                   <h5 class="card-title"><%= workout.title %></h5>
                 <% end %>
                   <h6 class="card-subtitle mb-2 text-muted">Author: <%= workout.user.name %></h6>
