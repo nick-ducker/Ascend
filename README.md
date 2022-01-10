@@ -1,24 +1,7 @@
-# README
+# Ascender
+https://ascenderlog.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tiny rails app built during my time at Coder Academy.
+Allows a user to sign into an account and log climbing ascents. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Some of my first exposure to CRUD applications in a fullstack environment with authentication.
